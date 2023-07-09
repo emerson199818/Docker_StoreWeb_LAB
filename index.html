@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>SenaNET</title>
+  <link rel="stylesheet" type="text/css" href="css/estilos.css">
+</head>
+<body>
+  <div>
+    <img src="recursos/fondo.jpg" alt="Descripción de la imagen">
+    <div class="titulo"><span><strong>SenaNet-Store</strong></span></div>
+    <div class="panel-list">
+        <button class="custom-button" id="button1">ANTERIOR</button>
+        <button class="custom-button" id="button2">SIGUIENTE</button>
+        <div class="panel" id="panel1">
+            <img src="productos/1.png" alt="imagen1" class="zoomable">
+        </div>
+        <div class="panel" id="panel2">
+            <img src="productos/2.png" alt="imagen2" class="zoomable">
+        </div>
+        <div class="panel" id="panel3">
+            <img src="productos/3.png" alt="imagen3" class="zoomable">
+        </div>
+        <div class="panel" id="panel4">
+            <img src="productos/4.png" alt="imagen4" class="zoomable">
+        </div>
+        <div class="panel" id="panel5">
+            <img src="productos/5.png" alt="imagen5" class="zoomable">
+        </div>
+        <div class="panel" id="panel6">
+            <img src="productos/6.png" alt="imagen6" class="zoomable">
+        </div>
+        <div class="panel" id="panel7">
+            <img src="productos/7.png" alt="imagen7" class="zoomable">
+        </div>
+        <div class="panel" id="panel8">
+            <img src="productos/8.png" alt="imagen8" class="zoomable">
+        </div>
+        <div class="panel" id="panel9">
+            <img src="productos/9.png" alt="imagen9" class="zoomable">
+        </div>
+    </div>
+  </div>
+</body>
+</html>
+
+<script>
+    //panel scroll
+    var boton1 = document.getElementById("button1");
+    var boton2 = document.getElementById("button2");
+
+    var csiguiente = 0;
+    var canterior = 0;
+    
+    boton1.addEventListener("click", anterior);
+    boton2.addEventListener("click", siguiente);
+
+    if (csiguiente >= 0) {
+        boton1.style.display = "none";
+        mostararPaneles("panel1", "panel2", "panel3");
+        ocultarPaneles("panel4", "panel5", "panel6");
+        ocultarPaneles("panel7", "panel8", "panel9");
+    }
+
+    function siguiente() {
+        csiguiente ++;
+        if (csiguiente === 1) {
+            boton1.style.display = "block";
+            ocultarPaneles("panel1", "panel2", "panel3");
+            mostararPaneles("panel4", "panel5", "panel6");
+            ocultarPaneles("panel7", "panel8", "panel9");
+
+        } else if (csiguiente === 2) {
+            boton2.style.display = "none";
+            ocultarPaneles("panel1", "panel2", "panel3");
+            ocultarPaneles("panel4", "panel5", "panel6");
+            mostararPaneles("panel7", "panel8", "panel9");
+        }
+    }
+
+    function anterior() {
+        canterior ++;
+        if (csiguiente === 1) {
+            csiguiente --;
+            mostararPaneles("panel1", "panel2", "panel3");
+            ocultarPaneles("panel4", "panel5", "panel6");
+            ocultarPaneles("panel7", "panel8", "panel9");
+            boton1.style.display = "none";
+
+        } else if (csiguiente === 2) {
+            csiguiente --;
+            ocultarPaneles("panel1", "panel2", "panel3");
+            mostararPaneles("panel4", "panel5", "panel6");
+            ocultarPaneles("panel7", "panel8", "panel9");;
+            boton2.style.display = "block";
+        }
+    }
+
+    function mostararPaneles(panel1Id, panel2Id, panel3Id) {
+        document.getElementById(panel1Id).style.display = "block";
+        document.getElementById(panel2Id).style.display = "block";
+        document.getElementById(panel3Id).style.display = "block";
+    }
+
+    function ocultarPaneles(panel1Id, panel2Id, panel3Id) {
+        document.getElementById(panel1Id).style.display = "none";
+        document.getElementById(panel2Id).style.display = "none";
+        document.getElementById(panel3Id).style.display = "none";
+    }
+
+  </script>
